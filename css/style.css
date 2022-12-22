@@ -1,0 +1,27 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    max-width: 1440px;
+    margin: 0 auto;
+    font-family: Lato, sans-serif;
+  }
+
+  header {
+    padding: 2vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column nowrap;
+  }
+
+  header h1 {
+    font-family: 'DM Sans', sans-serif !important;
+    color: #d04f4f;
+  }
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
