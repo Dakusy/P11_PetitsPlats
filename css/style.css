@@ -1,3 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
+
+
 * {
     box-sizing: border-box;
   }
@@ -21,7 +26,83 @@
     color: #d04f4f;
   }
 
-  a {
+  input::placeholder {
+    font-size: 18px;
+}
+
+
+a {
     text-decoration: none;
-    color: black;
-  }
+}
+
+.search-bar{
+    display:flex;
+}
+
+  .search-bar-input {
+    height: 69px;
+    background: #e7e7e7;
+    border-radius: 15px 0px 0px 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 1240px;
+    border:none;
+}
+
+.search-bar-input::placeholder {
+    opacity: 0.25;
+}
+
+.search-bar-icon {
+  text-align:center;
+  height: 69px;
+  background: #E7E7E7;
+  border: none;
+  border-radius: 0px 15px 15px 0px;
+  color: black;
+  font-size: 30px;
+  cursor:pointer;
+}
+
+button>span{
+  font-family: Lato;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 22px;
+  color: #FFFFFF;
+}
+
+.filters {
+  margin-top: 50px;
+  display: flex;
+  gap: 15px;
+}
+
+.ingredients-btn {
+  height: 70px;
+  width: 170px;
+  background: #3282F7;
+  border:none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.appareils-btn {
+  height: 70px;
+  width: 170px;
+  background: #68D9A4;
+  border:none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.ustensils-btn {
+  height: 70px;
+  width: 170px;
+  background: #ED6454;
+  border:none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
