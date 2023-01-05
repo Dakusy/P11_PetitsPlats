@@ -47,5 +47,49 @@
             </nav>
 
          </form>
+
+         <section id="recipes">
+        </section>
+
+        <template id="recipe-model">
+            <div class="card">
+              <div class="card-empty-img"></div>
+              <div class="card-body">
+                <div class="card-title">
+                  <h5 class="recipe-name"></h5>
+                  <div class="time">
+                    <i class="far fa-clock"></i>
+                    <span class="recipe-duration">
+                    </span>
+                    min
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <ul class="recipe-ingredients">
+                    </ul>
+                  </div>
+                  <div class="col">
+                    <span class="recipe-instructions">
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </template>
+
+
+          <template id="ingredient-model">
+            <li class="recipe-ingredient">
+              <strong class="recipe-ingredient-name"></strong>
+               <span class="recipe-ingredient-quantity">
+               </span>
+               <span class="recipe-ingredient-unit">
+              </span>
+            </li>
+          </template>
+
+         <script src="data/recipes.js" ></script>
+         <script src="js/index.js"></script>
     </body>
 </html>
