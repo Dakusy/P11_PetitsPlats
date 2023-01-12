@@ -25,8 +25,8 @@
 
             </div>
 
-         <form class="filters">
-            <nav class="ingredients-container">
+         <div class="filters">
+            <div class="ingredients-container">
                 <button type="button" class="ingredients-btn tags-btn" aria-haspopup="true" aria-expanded="false">
                     <span>Ingredients</span>
                     <i class ="fa fa-chevron-down"></i>
@@ -39,23 +39,49 @@
                     </div>
                     <ul class="tags-items">
                     </ul>
+                    <div id="ingredients-opened-empty"  class="tags-opened-empty">
+                      Votre recherche ne correspond à aucun élément
+                    </div>
                 </div>
 
-            </nav>
+              </div>
 
-            <nav class="appareils-container">
-                <button type="button" class="appareils-btn tags-btn">
-                    <span>Appareils </span>
+            <div class="appliances-container">
+                <button type="button" class="appliances-btn tags-btn" aria-haspopup="true" aria-expanded="false">
+                    <span>Appareils</span>
                     <i class ="fa fa-chevron-down"></i>
-            </nav>
+                    <div class="appliances-opened tags-opened">
+                      <div class="search-line">
+                          <input type="text" placeholder="Rechercher un appareil" aria-label="Search">
+                          <i class="close-appliances fa fa-chevron-up ml-2"></i>
+                      </div>
+                      <ul class="tags-items">
+                      </ul>
+                      <div id="appliances-opened-empty"  class="tags-opened-empty">
+                        Votre recherche ne correspond à aucun élément
+                      </div>
+                  </div>
+                </div>
 
-            <nav class="ustensils-container">
-                <button type="button" class="ustensils-btn tags-btn">
+            <div class="ustensils-container">
+                <button type="button" class="ustensils-btn tags-btn" aria-haspopup="true" aria-expanded="false">
                     <span>Ustensiles</span>
                     <i class ="fa fa-chevron-down"></i>
-            </nav>
+                    </button>
+                    <div class="ustensils-opened tags-opened">
+                      <div class="search-line">
+                          <input type="text" placeholder="Rechercher un ustensile" aria-label="Search">
+                          <i class="close-ustensils fa fa-chevron-up ml-2"></i>
+                      </div>
+                      <ul class="tags-items">
+                      </ul>
+                      <div id="ingredients-opened-empty"  class="tags-opened-empty">
+                        Votre recherche ne correspond à aucun élément
+                      </div>
+                  </div>
+                </div>
 
-         </form>
+         </div>
          <div id="empty-recipes-message">
         </div>
 
@@ -100,9 +126,31 @@
             </li>
           </template>
 
+          <template id="tags-item-model">
+            <li class="tags-item-name">
+            </li>
+          </template>
+
+          <template id="selected-ingredients-item-model">
+            <div class="selected-tags-item selected-ingredients mt-2">
+              <div>
+              <span class="mr-2 selected-tags-item-name">
+              </span>
+              <i class="delete-tags-item-btn fa fa-times-circle-o"></i>
+              </div>
+              </div>
+            </template>
+
+            <template id="empty-recipes-model">
+              <h3 class="mt-3 d-flex">
+                Aucune recette ne correspond à votre critère… Vous pouvez
+        chercher « tarte aux pommes », « poisson », etc.
+              </h3>
+            </template>
+
          <script src="data/recipes.js" ></script>
-         <script src="js/index.js"></script>
          <script src="js/filter.js"></script>
          <script src="js/tags.js"></script>
+         <script src="js/index.js"></script>
     </body>
 </html>

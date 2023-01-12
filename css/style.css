@@ -90,7 +90,7 @@ button>span{
   cursor: pointer;
 }
 
-.appareils-btn {
+.appliances-btn {
   height: 70px;
   width: 170px;
   background: #68D9A4;
@@ -162,4 +162,71 @@ button>span{
   display: -webkit-box;
   -webkit-line-clamp: 6;
   -webkit-box-orient: vertical;
+}
+
+
+/* tags */
+
+
+
+.tags-opened{
+  display: none;
+  padding: 15px;
+}
+.tags-opened input {
+  width: 100%;
+}
+.tags-opened i {
+  cursor: pointer;
+}
+.tags-opened input::placeholder {
+  color: rgba(255, 255, 255, 0.9);
+}
+.tags-opened input:focus {
+  outline: none;
+}
+.tags-opened .search-line {
+  display: flex;
+  height: 50px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tags-opened-empty{
+  display: none;
+}
+
+.ingredients-opened, .ingredients-opened input, .selected-ingredients  {
+  background: #3282F7;
+  border: #3282F7;
+  color: #FFFFFF;
+}
+
+.appliances-opened, .appliances-opened input, .selected-appliances   {
+  background: #68D9A4;
+  border: #68D9A4;
+  color: #FFFFFF;
+}
+.ustensils-opened, .ustensils-opened input, .selected-ustensils  {
+  background: #ED6454;
+  border: #ED6454;
+  color: #FFFFFF;
+}
+
+/* tags selectionnées*/
+
+.selected-tags-item {
+    height: 40px;
+    border-radius: 5px;
+    padding: 0 5px;
+    display: inline-block;
+}
+
+.selected-tags-item>div {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+.delete-tags-item-btn{
+  cursor: pointer;
 }

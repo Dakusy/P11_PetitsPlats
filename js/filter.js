@@ -17,13 +17,13 @@ searchBar.addEventListener('input', (event) => {
 function filterRecipes(research){
     recipesFiltered = new Set(recipes)
     filterByText(research.textInputed.toLowerCase())
-    //filterByIngredients(research.ingredients)
+    filterByIngredients(research.ingredients)
     //filterByUstensils(research.ustensils)
     //filterByAppliances(research.appliances)
     recipesSection.innerHTML = ''
     if (!recipesFiltered.size){
-        const elt = document.getElementById('empty-recipes-model');
-        const dupNode = document.importNode(elt.content,true);
+        const model = document.getElementById('empty-recipes-model');
+        const dupNode = document.importNode(model.content,true);
         emptyRecipesMessage.innerHTML = ''
         emptyRecipesMessage.appendChild(dupNode)
     }
@@ -31,6 +31,7 @@ function filterRecipes(research){
         emptyRecipesMessage.innerHTML = ''
         hydrateRecipes(recipesFiltered)
     }
+    hydrateAllTags()
 
     
 }
@@ -54,6 +55,28 @@ function filterByText(text) {
             {
                 filteredRecipesList.push(recipe)
             }
+        }
+    }
+    recipesFiltered = new Set(filteredRecipesList)
+}
+
+function filterByIngredients(ingredientsList){
+    if (!ingredientsList.length) return
+    const filteredRecipesList = []
+    for (let i= 0 ; i < recipesFiltered.size ; i++){
+        const recipe = Array.from(recipesFiltered)[i]
+        let isRecipeValid = true
+        const recipeIngredientsList = []
+        for (let i= 0 ; i < recipe.ingredients.length ; i++){
+            const ingredient = recipe.ingredients[i]
+            recipeIngredientsList.push(ingredient.ingredient)
+        }
+        for (let i = 0 ; i < ingredientsList.length ; i++){
+            const ingredient = ingredientsList[i];
+            if (!recipeIngredientsList.includes(ingredient)) isRecipeValid = false
+        }
+        if (isRecipeValid){
+            filteredRecipesList.push(recipe)
         }
     }
     recipesFiltered = new Set(filteredRecipesList)

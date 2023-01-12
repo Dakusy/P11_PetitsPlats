@@ -1,6 +1,7 @@
 const recipesSection = document.getElementById("recipes")
 
 hydrateRecipes(recipes) // Show all recipes.
+hydrateAllTags()
 
 function hydrateRecipes(recipes){
     recipesLength = recipes.length || recipes.size
