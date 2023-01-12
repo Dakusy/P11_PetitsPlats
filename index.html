@@ -21,32 +21,43 @@
                 </button>
             </div>
 
-            <div class="tags">
+            <div class="selected-tags">
 
             </div>
 
          <form class="filters">
             <nav class="ingredients-container">
-                <button type="button" class="ingredients-btn">
+                <button type="button" class="ingredients-btn tags-btn" aria-haspopup="true" aria-expanded="false">
                     <span>Ingredients</span>
                     <i class ="fa fa-chevron-down"></i>
                 </button>
 
+                <div class="ingredients-opened tags-opened">
+                    <div class="search-line">
+                        <input type="text" placeholder="Rechercher un ingrédient" aria-label="Search">
+                        <i class="close-ingredients fa fa-chevron-up ml-2"></i>
+                    </div>
+                    <ul class="tags-items">
+                    </ul>
+                </div>
+
             </nav>
 
             <nav class="appareils-container">
-                <button type="button" class="appareils-btn">
+                <button type="button" class="appareils-btn tags-btn">
                     <span>Appareils </span>
                     <i class ="fa fa-chevron-down"></i>
             </nav>
 
             <nav class="ustensils-container">
-                <button type="button" class="ustensils-btn">
+                <button type="button" class="ustensils-btn tags-btn">
                     <span>Ustensiles</span>
                     <i class ="fa fa-chevron-down"></i>
             </nav>
 
          </form>
+         <div id="empty-recipes-message">
+        </div>
 
          <section id="recipes">
         </section>
@@ -91,5 +102,7 @@
 
          <script src="data/recipes.js" ></script>
          <script src="js/index.js"></script>
+         <script src="js/filter.js"></script>
+         <script src="js/tags.js"></script>
     </body>
 </html>
