@@ -18,7 +18,7 @@ function filterRecipes(research){
     recipesFiltered = new Set(recipes)
     filterByText(research.textInputed.toLowerCase())
     filterByIngredients(research.ingredients)
-    //filterByUstensils(research.ustensils)
+    filterByUstensils(research.ustensils)
     //filterByAppliances(research.appliances)
     recipesSection.innerHTML = ''
     if (!recipesFiltered.size){
