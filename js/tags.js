@@ -81,6 +81,35 @@ function hydateTagByText(tag, text) {
         }
     }
 
+    else if (tag === 'appliances') {
+        for (let i= 0 ; i < recipesFiltered.size ; i++){
+            const recipe = Array.from(recipesFiltered)[i]
+            if ((recipe.appliance.toLowerCase().includes(text) || !text) 
+            && (!filters[tag].includes(normalizeData(recipe.appliance))))
+            {
+               tagsItemsList.add(normalizeData(recipe.appliance))
+            }
+        }
+    }
+    else if (tag === 'ustensils') {
+        for (let i= 0 ; i < recipesFiltered.size ; i++){
+            const recipe = Array.from(recipesFiltered)[i]
+            for (let i= 0 ; i < recipe.ustensils.length ; i++){
+                const ustensil = recipe.ustensils[i]
+                if ((ustensil.toLowerCase().includes(text) || !text)
+                && (!filters[tag].includes(normalizeData(ustensil))
+                ))
+                {
+                    tagsItemsList.add(normalizeData(ustensil))
+                }
+            }
+        }
+    }
+
+    if(!tagsItemsList.size){
+        emptyTagsMessage[tag].style.display = 'block'
+    }
+
     for (let i = 0 ; i < tagsItemsList.size; i++) {
         const tagsItem = Array.from(tagsItemsList)[i]
         fillTags(tagsItem, tag)

@@ -35,6 +35,8 @@ a {
     text-decoration: none;
 }
 
+/* barre de recherche */
+
 .search-bar{
     display:flex;
 }
@@ -80,6 +82,8 @@ button>span{
   display: flex;
   gap: 15px;
 }
+
+/* btn filtres */
 
 .ingredients-btn {
   height: 70px;
@@ -166,8 +170,6 @@ button>span{
 
 
 /* tags */
-
-
 
 .tags-opened{
   display: none;
