@@ -9,10 +9,14 @@ const filters = {
     appliances  : []
 }
 
+
+//event permettant la mise à jour à chaque input utilisant la fonction filterRecipes
 searchBar.addEventListener('input', (event) => {
     filters.textInputed = event.target.value
     filterRecipes(filters)
 })
+
+//fonction regroupant tout les filtres
 
 function filterRecipes(research){
     recipesFiltered = new Set(recipes)
@@ -36,6 +40,8 @@ function filterRecipes(research){
     
 }
 
+
+// filtre le texte taper avec une boucle for à partir de 3 caractères
 function filterByText(text) { 
     const filteredRecipesList = []
     if (text.length < 3) return
@@ -60,6 +66,8 @@ function filterByText(text) {
     recipesFiltered = new Set(filteredRecipesList)
 }
 
+
+//filtre par les ingrédients
 function filterByIngredients(ingredientsList){
     if (!ingredientsList.length) return
     const filteredRecipesList = []
@@ -82,6 +90,8 @@ function filterByIngredients(ingredientsList){
     recipesFiltered = new Set(filteredRecipesList)
 }
 
+
+//filtre par les ustensiles
 function filterByUstensils(ustensilsList) {
     if (!ustensilsList.length) return
     const filteredRecipesList = []
@@ -104,6 +114,7 @@ function filterByUstensils(ustensilsList) {
     recipesFiltered = new Set(filteredRecipesList)
 }
 
+//filtre par les appareils
 function filterByAppliances(appliancesList) {
     if (!appliancesList.length) return
     const filteredRecipesList = []
