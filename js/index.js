@@ -1,37 +1,37 @@
 const recipesSection = document.getElementById("recipes")
 
-hydrateRecipes(recipes) // Show all recipes.
-hydrateAllTags()
+hydrateRecipes(recipes) // Affiche toutes les recettes.
+hydrateAllTags() // Appel la fonction HydrateAllTags qui appel une autre fonction permettant de modifier en temps réels les tags.
 
-function hydrateRecipes(recipes){
+function hydrateRecipes(recipes) {
     recipesLength = recipes.length || recipes.size
-    for (let i = 0 ; i< recipesLength ; i++ ){
+    for (let i = 0; i < recipesLength; i++) {
         const recipe = Array.from(recipes)[i]
         showRecipe(recipe)
     }
 }
 
-// Fonction allowing the recipes showing using HTML Template.
+// Fonction permettant l'affichage des recettes utilisant le système des templates HTML.
 
 function showRecipe(recipe) {
     const model = document.getElementById('recipe-model');
-    const dupNode = document.importNode(model.content,true);
-    dupNode.querySelector('.recipe-name').textContent= recipe.name;
-    dupNode.querySelector('.recipe-duration').textContent= recipe.time;
-    const ingredientsList = dupNode.querySelector(".recipe-ingredients")
+    const impNode = document.importNode(model.content, true);
+    impNode.querySelector('.recipe-name').textContent = recipe.name;
+    impNode.querySelector('.recipe-duration').textContent = recipe.time;
+    const ingredientsList = impNode.querySelector(".recipe-ingredients")
     const ingredientModel = document.getElementById('ingredient-model');
-    for (let i = 0 ; i < recipe.ingredients.length ; i++){
+    for (let i = 0; i < recipe.ingredients.length; i++) {
         const ingredient = recipe.ingredients[i]
-        const dupIngredientNode = document.importNode(ingredientModel.content,true);
-        dupIngredientNode.querySelector('.recipe-ingredient-name').textContent = ingredient.ingredient
+        const impIngredientNode = document.importNode(ingredientModel.content, true);
+        impIngredientNode.querySelector('.recipe-ingredient-name').textContent = ingredient.ingredient
         if (ingredient.quantity) {
-            dupIngredientNode.querySelector('.recipe-ingredient-quantity').textContent = ': ' + ingredient.quantity
+            impIngredientNode.querySelector('.recipe-ingredient-quantity').textContent = ': ' + ingredient.quantity
         }
         if (ingredient.unit) {
-            dupIngredientNode.querySelector('.recipe-ingredient-unit').textContent = ingredient.unit
+            impIngredientNode.querySelector('.recipe-ingredient-unit').textContent = ingredient.unit
         }
-        ingredientsList.appendChild(dupIngredientNode)
+        ingredientsList.appendChild(impIngredientNode)
     }
-    dupNode.querySelector('.recipe-instructions').textContent = recipe.description
-    recipesSection.appendChild(dupNode);
+    impNode.querySelector('.recipe-instructions').textContent = recipe.description
+    recipesSection.appendChild(impNode);
 }

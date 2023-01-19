@@ -3,10 +3,10 @@ const emptyRecipesMessage = document.getElementById('empty-recipes-message')
 let recipesFiltered = new Set(recipes)
 
 const filters = {
-    textInputed  : "",
-    ingredients  : [],
-    ustensils  : [],
-    appliances  : []
+    textInputed: "",
+    ingredients: [],
+    ustensils: [],
+    appliances: []
 }
 
 
@@ -18,16 +18,16 @@ searchBar.addEventListener('input', (event) => {
 
 //fonction regroupant tout les filtres
 
-function filterRecipes(research){
+function filterRecipes(research) {
     recipesFiltered = new Set(recipes)
     filterByText(research.textInputed.toLowerCase())
     filterByIngredients(research.ingredients)
     filterByUstensils(research.ustensils)
     filterByAppliances(research.appliances)
     recipesSection.innerHTML = ''
-    if (!recipesFiltered.size){
+    if (!recipesFiltered.size) {
         const model = document.getElementById('empty-recipes-model');
-        const dupNode = document.importNode(model.content,true);
+        const dupNode = document.importNode(model.content, true);
         emptyRecipesMessage.innerHTML = ''
         emptyRecipesMessage.appendChild(dupNode)
     }
@@ -37,53 +37,51 @@ function filterRecipes(research){
     }
     hydrateAllTags()
 
-    
+
 }
 
 
 // filtre le texte taper avec une boucle for à partir de 3 caractères
-function filterByText(text) { 
+function filterByText(text) {
     const filteredRecipesList = []
     if (text.length < 3) return
-    for (let i= 0 ; i < recipesFiltered.size ; i++){
+    for (let i = 0; i < recipesFiltered.size; i++) {
         const recipe = Array.from(recipesFiltered)[i]
-        if (recipe.name.toLowerCase().includes(text)) 
-        { 
+        if (recipe.name.toLowerCase().includes(text)) {
             filteredRecipesList.push(recipe)
         }
         else if (recipe.description.toLowerCase().includes(text)) {
             filteredRecipesList.push(recipe)
         }
         else
-        for (let i= 0 ; i < recipe.ingredients.length ; i++){
-            const ingredient = recipe.ingredients[i] 
-            if (ingredient.ingredient.toLowerCase().includes(text))
-            {
-                filteredRecipesList.push(recipe)
+            for (let i = 0; i < recipe.ingredients.length; i++) {
+                const ingredient = recipe.ingredients[i]
+                if (ingredient.ingredient.toLowerCase().includes(text)) {
+                    filteredRecipesList.push(recipe)
+                }
             }
-        }
     }
     recipesFiltered = new Set(filteredRecipesList)
 }
 
 
 //filtre par les ingrédients
-function filterByIngredients(ingredientsList){
+function filterByIngredients(ingredientsList) {
     if (!ingredientsList.length) return
     const filteredRecipesList = []
-    for (let i= 0 ; i < recipesFiltered.size ; i++){
+    for (let i = 0; i < recipesFiltered.size; i++) {
         const recipe = Array.from(recipesFiltered)[i]
         let isRecipeValid = true
         const recipeIngredientsList = []
-        for (let i= 0 ; i < recipe.ingredients.length ; i++){
+        for (let i = 0; i < recipe.ingredients.length; i++) {
             const ingredient = recipe.ingredients[i]
             recipeIngredientsList.push(ingredient.ingredient)
         }
-        for (let i = 0 ; i < ingredientsList.length ; i++){
+        for (let i = 0; i < ingredientsList.length; i++) {
             const ingredient = ingredientsList[i];
             if (!recipeIngredientsList.includes(ingredient)) isRecipeValid = false
         }
-        if (isRecipeValid){
+        if (isRecipeValid) {
             filteredRecipesList.push(recipe)
         }
     }
@@ -95,19 +93,19 @@ function filterByIngredients(ingredientsList){
 function filterByUstensils(ustensilsList) {
     if (!ustensilsList.length) return
     const filteredRecipesList = []
-    for (let i= 0 ; i < recipesFiltered.size ; i++){
+    for (let i = 0; i < recipesFiltered.size; i++) {
         const recipe = Array.from(recipesFiltered)[i]
         let isRecipeValid = true
         const recipeUstensilsList = []
-        for (let i= 0 ; i < recipe.ustensils.length ; i++){
+        for (let i = 0; i < recipe.ustensils.length; i++) {
             const ustensil = recipe.ustensils[i]
             recipeUstensilsList.push(normalizeData(ustensil))
         }
-        for (let i = 0 ; i < ustensilsList.length ; i++){
+        for (let i = 0; i < ustensilsList.length; i++) {
             const ustensil = ustensilsList[i];
             if (!recipeUstensilsList.includes(ustensil)) isRecipeValid = false
         }
-        if (isRecipeValid){
+        if (isRecipeValid) {
             filteredRecipesList.push(recipe)
         }
     }
@@ -118,11 +116,11 @@ function filterByUstensils(ustensilsList) {
 function filterByAppliances(appliancesList) {
     if (!appliancesList.length) return
     const filteredRecipesList = []
-    for (let i= 0 ; i < recipesFiltered.size ; i++){
+    for (let i = 0; i < recipesFiltered.size; i++) {
         const recipe = Array.from(recipesFiltered)[i]
         let isRecipeValid = true
         const recipesIngredientsList = []
-        if (appliancesList.includes(normalizeData(recipe.appliance))){
+        if (appliancesList.includes(normalizeData(recipe.appliance))) {
             filteredRecipesList.push(recipe)
         }
     }
