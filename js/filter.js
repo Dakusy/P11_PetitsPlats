@@ -41,26 +41,15 @@ function filterRecipes(research) {
 }
 
 
-// filtre le texte taper avec une boucle for à partir de 3 caractères
+// filtre le texte taper avec une fonction JS avancé : filter
 function filterByText(text) {
-    const filteredRecipesList = []
     if (text.length < 3) return
-    for (let i = 0; i < recipesFiltered.size; i++) {
-        const recipe = Array.from(recipesFiltered)[i]
-        if (recipe.name.toLowerCase().includes(text)) {
-            filteredRecipesList.push(recipe)
-        }
-        else if (recipe.description.toLowerCase().includes(text)) {
-            filteredRecipesList.push(recipe)
-        }
-        else
-            for (let i = 0; i < recipe.ingredients.length; i++) {
-                const ingredient = recipe.ingredients[i]
-                if (ingredient.ingredient.toLowerCase().includes(text)) {
-                    filteredRecipesList.push(recipe)
-                }
-            }
-    }
+    let filteredRecipesList = Array.from(recipesFiltered)
+    filteredRecipesList = filteredRecipesList.filter(e => (
+        e.name.toLowerCase().includes(text)
+        || e.description.toLowerCase().includes(text)
+        || e.ingredients.forEach(ingredient => { return ingredient.ingredient.toLowerCase().includes(text) })
+    ))
     recipesFiltered = new Set(filteredRecipesList)
 }
 
