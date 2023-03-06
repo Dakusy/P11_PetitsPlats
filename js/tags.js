@@ -41,6 +41,8 @@ for (let i = 0; i < tagsButtons.length; i++) {
     })
 }
 
+
+//Permet d'ouvrir le menu d'une catégorie de tag spécifique et afficher les informations.
 function openTag(tag) {
     for (let i = 0; i < tagsNameArray.length; i++) {
         const tagName = tagsNameArray[i]
@@ -53,6 +55,7 @@ function openTag(tag) {
     buttonToHide.style.setProperty('display', 'none', 'important')
 }
 
+//Permet de fermer le menu d'une catégorie de tag spécifique
 function closeTag(tag) {
     const tagToHide = document.querySelector('.' + tag + '-opened')
     const buttonToShow = document.querySelector('.' + tag + '-btn')
@@ -64,7 +67,7 @@ function closeTag(tag) {
 
 
 
-
+// Met à jour la liste des tags par rapport à le recherche de tag en cours par rapport à la catégorie de tag correspondante.
 function hydrateTagByText(tag, text) {
     const tagsItemsList = new Set();
     tagsItems[tag + 'TagsItems'].innerHTML = ''
@@ -89,9 +92,11 @@ function hydrateTagByText(tag, text) {
             if ((recipe.appliance.toLowerCase().includes(text) || !text)
                 && (!filters[tag].includes(normalizeData(recipe.appliance)))) {
                 tagsItemsList.add(normalizeData(recipe.appliance))
+                console.log(tagsItemsList.add(normalizeData(recipe.appliance)));
             }
         }
     }
+
     else if (tag === 'ustensils') {
         for (let i = 0; i < recipesFiltered.size; i++) {
             const recipe = Array.from(recipesFiltered)[i]
@@ -105,16 +110,23 @@ function hydrateTagByText(tag, text) {
             }
         }
     }
-
+// Affiche le message d'erreur qu'acun tag ne correspond
     if (!tagsItemsList.size) {
         emptyTagsMessage[tag].style.display = 'block'
     }
+// Enlève le message d'erreur qu'aucun tag ne correspond
+    else {
+        emptyTagsMessage[tag].style.display = 'none'
+    }
 
+// Ajoute les tags dans la liste.
     for (let i = 0; i < tagsItemsList.size; i++) {
         const tagsItem = Array.from(tagsItemsList)[i]
         fillTags(tagsItem, tag)
     }
 }
+
+
 
 function fillTags(tagsItem, tag) {
     const elt = document.getElementById('tags-item-model');
@@ -126,6 +138,8 @@ function fillTags(tagsItem, tag) {
     tagsItems[tag + 'TagsItems'].appendChild(dupNode)
 }
 
+
+// Permet de selectionner un tag dans la liste correspondante et de l'ajouter dans la liste des sélectionnés.
 function selectTag(tagsItem, tag) {
     const selectedTagsItemList = document.querySelector('.selected-tags')
     const elt = document.getElementById('selected-' + tag + '-item-model');
@@ -140,17 +154,22 @@ function selectTag(tagsItem, tag) {
     filterRecipes(filters)
 }
 
+
+// Permet de supprimer un tag sélectionné.
 function closeTagsItem(e, tag, tagsItem) {
     filters[tag].splice(filters[tag].indexOf(tagsItem))
     e.target.parentElement.parentElement.remove()
     filterRecipes(filters)
 }
 
+// met en minuscule toute recherche écrite pour correspondre avec les tags existants.
 function filterTagItemsByText(e, tag) {
     const text = e.target.value.toLowerCase()
     hydrateTagByText(tag, text)
 }
 
+
+// hydratation des élèments pour l'intéractivité.
 function hydrateAllTags() {
     hydrateTagByText('ingredients')
     hydrateTagByText('appliances')

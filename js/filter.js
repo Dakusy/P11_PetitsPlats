@@ -20,7 +20,7 @@ searchBar.addEventListener('input', (event) => {
 
 function filterRecipes(research) {
     recipesFiltered = new Set(recipes)
-    filterByText(research.textInputed.toLowerCase())
+    filterByText(research.textInputed.toLowerCase()) // met la recherche en minuscule pour correspondre aux datas.
     filterByIngredients(research.ingredients)
     filterByUstensils(research.ustensils)
     filterByAppliances(research.appliances)
