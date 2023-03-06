@@ -215,6 +215,14 @@ button>span{
   color: #FFFFFF;
 }
 
+.tags-items {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 10px
+}
+
+
 /* tags selectionnées*/
 
 .selected-tags-item {

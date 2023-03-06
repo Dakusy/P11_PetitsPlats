@@ -109,6 +109,9 @@ function hydrateTagByText(tag, text) {
     if (!tagsItemsList.size) {
         emptyTagsMessage[tag].style.display = 'block'
     }
+    else {
+        emptyTagsMessage[tag].style.display = 'none'
+    }
 
     for (let i = 0; i < tagsItemsList.size; i++) {
         const tagsItem = Array.from(tagsItemsList)[i]

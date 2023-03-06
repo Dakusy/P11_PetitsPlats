@@ -1,0 +1,24 @@
+{
+  "name": "p7_petitsplats",
+  "version": "1.0.0",
+  "description": "Code repo for project 7",
+  "main": "index.js",
+  "dependencies": {
+    "eslint": "^8.35.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "lint" : "eslint --max-warnings=0 .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dakusy/P7_PetitsPlats.git"
+  },
+  "author": "Dakusy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dakusy/P7_PetitsPlats/issues"
+  },
+  "homepage": "https://github.com/Dakusy/P7_PetitsPlats#readme"
+}
